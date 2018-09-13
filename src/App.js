@@ -23,16 +23,26 @@ class Board extends React.Component {
     }
     handleDigitClick(value){
         let digits = this.state.digits;
-        digits += value.toString();
-        this.setState({digits: digits});
+        if (digits.length < 15) {
+            digits += value.toString();
+            this.setState({digits: digits});
+        }
     }
     handleClearClick(){
-        this.setState({digits: ''});
+        this.setState({
+            digits: '',
+            operation: '',
+            lhs: null,
+        });
+
     }
+
+    handleScreenClick(){}
+
     handleOperationClick(operation){
         const digits = this.state.digits;
         if (digits !== '') {
-            if (this.state.lhs == null) {
+            if (this.state.lhs == null && operation !== '=') {
                 const lhs = parseInt(digits, 10);
                 this.setState({lhs: lhs, operation: operation, digits: ''});
             }
@@ -56,7 +66,7 @@ class Board extends React.Component {
                         result = lhs / rhs;
                         break;
                 }
-                this.setState({lhs: null, digits: result.toString()})
+                this.setState({lhs: null, digits: result.toString(), operation: null})
             }
         }
 
@@ -68,15 +78,13 @@ class Board extends React.Component {
         return <Button value={i} class={'square'} onClick={()=>this.handleOperationClick(i)}/>;
     }
     renderClear(i) {
-        return <Button value={i} class={'clear'} onClick={()=>this.handleClearClick()}/>;
+        return <Button value={i} class={'square'} onClick={()=>this.handleClearClick()}/>;
     }
     renderScreen(i) {
-        return <Button value={i} class={'screen'}/>;
+        return <Button value={i} class={'screen'} onClick={()=>this.handleScreenClick()}/>;
     }
 
     render() {
-        const status = 'Next player: X';
-
         return (
             <div>
                 <div className="board-row">
@@ -102,8 +110,9 @@ class Board extends React.Component {
                 </div>
                 <div className="board-row">
                     {this.renderDigit(0)}
-                    {this.renderClear('clear')}
+                    {this.renderClear('C')}
                     {this.renderOperation('=')}
+                    {this.renderOperation('*')}
                 </div>
             </div>
         );
