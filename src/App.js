@@ -36,9 +36,6 @@ class Board extends React.Component {
         });
 
     }
-
-    handleScreenClick(){}
-
     handleOperationClick(operation){
         const digits = this.state.digits;
         if (digits !== '') {
@@ -46,7 +43,7 @@ class Board extends React.Component {
                 const lhs = parseInt(digits, 10);
                 this.setState({lhs: lhs, operation: operation, digits: ''});
             }
-            else if (operation === '=') {
+            else if (this.state.lhs == null && operation === '=') {
                 const lhs = this.state.lhs;
                 const rhs = parseInt(digits, 10);
 
@@ -55,11 +52,10 @@ class Board extends React.Component {
                     case '+':
                         result = lhs + rhs;
                         break;
-                    case '-':
-                        console.log('minus');
+                    case '–':
                         result = lhs - rhs;
                         break;
-                    case '*':
+                    case '∗':
                         result = lhs * rhs;
                         break;
                     case '÷':
@@ -72,19 +68,24 @@ class Board extends React.Component {
                 this.setState({lhs: null, digits: result.toString(), operation: null})
             }
         }
+        else {
+            if (this.state.lhs != null && operation !== '='){
+                this.setState({operation: operation});
+            }
+        }
 
     }
     renderDigit(i) {
         return <Button value={i} class={'square'} onClick={()=>this.handleDigitClick(i)}/>;
     }
     renderOperation(i) {
-        return <Button value={i} class={'square'} onClick={()=>this.handleOperationClick(i)}/>;
+        return <Button value={i} class={'operation'} onClick={()=>this.handleOperationClick(i)}/>;
     }
     renderClear(i) {
         return <Button value={i} class={'square'} onClick={()=>this.handleClearClick()}/>;
     }
     renderScreen(i) {
-        return <Button value={i} class={'screen'} onClick={()=>this.handleScreenClick()}/>;
+        return <Button value={i} class={'screen'} onClick={()=>{}}/>;
     }
 
     render() {
@@ -103,7 +104,7 @@ class Board extends React.Component {
                     {this.renderDigit(4)}
                     {this.renderDigit(5)}
                     {this.renderDigit(6)}
-                    {this.renderOperation('-')}
+                    {this.renderOperation('–')}
                 </div>
                 <div className="board-row">
                     {this.renderDigit(7)}
@@ -115,14 +116,14 @@ class Board extends React.Component {
                     {this.renderDigit(0)}
                     {this.renderClear('C')}
                     {this.renderOperation('=')}
-                    {this.renderOperation('*')}
+                    {this.renderOperation('∗')}
                 </div>
             </div>
         );
     }
 }
 
-class Game extends React.Component {
+class App extends React.Component {
     render() {
         return (
             <div className="game">
@@ -130,8 +131,6 @@ class Game extends React.Component {
                     <Board />
                 </div>
                 <div className="game-info">
-                    <div>{/* status */}</div>
-                    <ol>{/* TODO */}</ol>
                 </div>
             </div>
         );
@@ -142,4 +141,4 @@ class Game extends React.Component {
 
 
 
-export default Game;
+export default App;

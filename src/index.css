@@ -19,7 +19,7 @@ ol, ul {
 
 .square {
   background: #fff;
-  border: 1px solid #999;
+  border: 1px solid #921029;
   float: left;
   font-size: 30px;
   font-weight: bold;
@@ -36,9 +36,24 @@ ol, ul {
   outline: none;
 }
 
+.operation {
+  background-color: #f2274f;
+  color: white;
+  border: 1px solid #921029;
+  float: left;
+  font-size: 42px;
+  line-height: 68px;
+  height: 68px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 68px;
+}
+
 .clear {
   background: #fff;
-  border: 1px solid #999;
+  border: 1px solid #921029;
   float: left;
   font-size: 24px;
   font-weight: bold;
@@ -56,8 +71,9 @@ ol, ul {
 }
 
 .screen {
-  background: #fff;
-  border: 1px solid #999;
+  background-color: #433437;
+  color: white;
+  border: 1px solid #921029;
   float: left;
   font-size: 24px;
   font-weight: bold;
