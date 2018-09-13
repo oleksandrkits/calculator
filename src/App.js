@@ -66,6 +66,9 @@ class Board extends React.Component {
                         result = lhs / rhs;
                         break;
                 }
+                if (result.toString().length > 15){
+                    result = 'Result is too large'
+                }
                 this.setState({lhs: null, digits: result.toString(), operation: null})
             }
         }
