@@ -18,6 +18,7 @@ class Board extends React.Component {
         this.state = {
             digits: '',
             operation: '',
+            lhs: null,
         }
     }
     handleDigitClick(value){
@@ -28,8 +29,37 @@ class Board extends React.Component {
     handleClearClick(){
         this.setState({digits: ''});
     }
-    handleOperationClick(){
-        
+    handleOperationClick(operation){
+        const digits = this.state.digits;
+        if (digits !== '') {
+            if (this.state.lhs == null) {
+                const lhs = parseInt(digits, 10);
+                this.setState({lhs: lhs, operation: operation, digits: ''});
+            }
+            else if (operation === '=') {
+                const lhs = this.state.lhs;
+                const rhs = parseInt(digits, 10);
+
+                let result;
+                switch (this.state.operation) {
+                    case '+':
+                        result = lhs + rhs;
+                        break;
+                    case '-':
+                        console.log('minus');
+                        result = lhs - rhs;
+                        break;
+                    case '*':
+                        result = lhs * rhs;
+                        break;
+                    case '÷':
+                        result = lhs / rhs;
+                        break;
+                }
+                this.setState({lhs: null, digits: result.toString()})
+            }
+        }
+
     }
     renderDigit(i) {
         return <Button value={i} class={'square'} onClick={()=>this.handleDigitClick(i)}/>;
