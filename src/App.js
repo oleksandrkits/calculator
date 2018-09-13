@@ -1,45 +1,47 @@
 import React, { Component } from 'react';
 import './App.css';
 
-class Digit extends React.Component {
+class Button extends React.Component {
     render() {
         return (
-            <button className="square">
+            <button className={this.props.class} onClick={() => this.props.onClick()}>
                 {this.props.value}
             </button>
         );
     }
 }
 
-class Clear extends React.Component {
-    render() {
-        return (
-            <button className="clear">
-                {this.props.value}
-            </button>
-        );
-    }
-}
-
-class Sqreen extends React.Component {
-    render() {
-        return (
-            <button className="sqreen">
-                {this.props.value}
-            </button>
-        );
-    }
-}
 
 class Board extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            digits: '',
+            operation: '',
+        }
+    }
+    handleDigitClick(value){
+        let digits = this.state.digits;
+        digits += value.toString();
+        this.setState({digits: digits});
+    }
+    handleClearClick(){
+        this.setState({digits: ''});
+    }
+    handleOperationClick(){
+        
+    }
     renderDigit(i) {
-        return <Digit value={i}/>;
+        return <Button value={i} class={'square'} onClick={()=>this.handleDigitClick(i)}/>;
+    }
+    renderOperation(i) {
+        return <Button value={i} class={'square'} onClick={()=>this.handleOperationClick(i)}/>;
     }
     renderClear(i) {
-        return <Clear value={i}/>;
+        return <Button value={i} class={'clear'} onClick={()=>this.handleClearClick()}/>;
     }
-    renderSqreen(i) {
-        return <Sqreen value={i}/>;
+    renderScreen(i) {
+        return <Button value={i} class={'screen'}/>;
     }
 
     render() {
@@ -48,30 +50,30 @@ class Board extends React.Component {
         return (
             <div>
                 <div className="board-row">
-                    {this.renderSqreen(0)}
+                    {this.renderScreen(this.state.digits)}
                 </div>
                 <div className="board-row">
                     {this.renderDigit(1)}
                     {this.renderDigit(2)}
                     {this.renderDigit(3)}
-                    {this.renderDigit('÷')}
+                    {this.renderOperation('÷')}
                 </div>
                 <div className="board-row">
                     {this.renderDigit(4)}
                     {this.renderDigit(5)}
                     {this.renderDigit(6)}
-                    {this.renderDigit('-')}
+                    {this.renderOperation('-')}
                 </div>
                 <div className="board-row">
                     {this.renderDigit(7)}
                     {this.renderDigit(8)}
                     {this.renderDigit(9)}
-                    {this.renderDigit('+')}
+                    {this.renderOperation('+')}
                 </div>
                 <div className="board-row">
                     {this.renderDigit(0)}
                     {this.renderClear('clear')}
-                    {this.renderDigit('=')}
+                    {this.renderOperation('=')}
                 </div>
             </div>
         );

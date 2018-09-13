@@ -55,7 +55,7 @@ ol, ul {
   outline: none;
 }
 
-.sqreen {
+.screen {
   background: #fff;
   border: 1px solid #999;
   float: left;
@@ -70,7 +70,7 @@ ol, ul {
   width: 133px;
 }
 
-.sqreen:focus {
+.screen:focus {
   outline: none;
 }
 
