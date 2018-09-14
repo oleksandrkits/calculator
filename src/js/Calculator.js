@@ -1,18 +1,7 @@
-import React, { Component } from 'react';
-import './App.css';
+import React from "react";
+import Button from "./Button";
 
-class Button extends React.Component {
-    render() {
-        return (
-            <button className={this.props.class} onClick={() => this.props.onClick()}>
-                {this.props.value}
-            </button>
-        );
-    }
-}
-
-
-class Board extends React.Component {
+class Calculator extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -36,8 +25,6 @@ class Board extends React.Component {
         });
 
     }
-
-    handleScreenClick(){}
 
     handleOperationClick(operation){
         const digits = this.state.digits;
@@ -66,7 +53,7 @@ class Board extends React.Component {
                         result = lhs / rhs;
                         break;
                 }
-                if (result.toString().length > 15){
+                if (result.toString().length > 20){
                     result = 'Result is too large'
                 }
                 this.setState({lhs: null, digits: result.toString(), operation: null})
@@ -84,7 +71,7 @@ class Board extends React.Component {
         return <Button value={i} class={'square'} onClick={()=>this.handleClearClick()}/>;
     }
     renderScreen(i) {
-        return <Button value={i} class={'screen'} onClick={()=>this.handleScreenClick()}/>;
+        return <Button value={i} class={'screen'} onClick={()=> {}}/>;
     }
 
     render() {
@@ -122,24 +109,4 @@ class Board extends React.Component {
     }
 }
 
-class Game extends React.Component {
-    render() {
-        return (
-            <div className="game">
-                <div className="game-board">
-                    <Board />
-                </div>
-                <div className="game-info">
-                    <div>{/* status */}</div>
-                    <ol>{/* TODO */}</ol>
-                </div>
-            </div>
-        );
-    }
-}
-
-// ========================================
-
-
-
-export default Game;
+export default Calculator
