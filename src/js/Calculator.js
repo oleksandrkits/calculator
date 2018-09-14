@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "./Button";
+import Screen from "./Screen";
 
 class Calculator extends React.Component {
     constructor(props){
@@ -62,16 +63,16 @@ class Calculator extends React.Component {
 
     }
     renderDigit(i) {
-        return <Button value={i} class={'square'} onClick={()=>this.handleDigitClick(i)}/>;
+        return <Button value={i} style={'digit'} onClick={()=>this.handleDigitClick(i)}/>;
     }
     renderOperation(i) {
-        return <Button value={i} class={'square'} onClick={()=>this.handleOperationClick(i)}/>;
+        return <Button value={i} style={'operation'} onClick={()=>this.handleOperationClick(i)}/>;
     }
     renderClear(i) {
         return <Button value={i} class={'square'} onClick={()=>this.handleClearClick()}/>;
     }
-    renderScreen(i) {
-        return <Button value={i} class={'screen'} onClick={()=> {}}/>;
+    renderScreen(digits) {
+        return <Screen digits={digits} class={'screen'} />;
     }
 
     render() {

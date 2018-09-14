@@ -13,29 +13,6 @@ ol, ul {
   display: table;
 }
 
-.status {
-  margin-bottom: 10px;
-}
-
-.square {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 30px;
-  font-weight: bold;
-  line-height: 68px;
-  height: 68px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
-  text-align: center;
-  width: 68px;
-}
-
-.square:focus {
-  outline: none;
-}
-
 .clear {
   background: #fff;
   border: 1px solid #999;
@@ -55,25 +32,6 @@ ol, ul {
   outline: none;
 }
 
-.screen {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 68px;
-  height: 68px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding-right: 10px;
-  text-align: right;
-  width: 269px;
-}
-
-.screen:focus {
-  outline: none;
-}
-
 .kbd-navigation .square:focus {
   background: #ddd;
 }
@@ -83,6 +41,3 @@ ol, ul {
   flex-direction: row;
 }
 
-.game-info {
-  margin-left: 20px;
-}

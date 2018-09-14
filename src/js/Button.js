@@ -1,8 +1,10 @@
 import React from "react";
+import '../css/Button.css';
 
 function Button(props) {
+    const className = `square ${props.style}`;
     return (
-        <button className={props.class} onClick={() => props.onClick()}>
+        <button className={className} onClick={() => props.onClick()}>
             {props.value}
         </button>
     );
