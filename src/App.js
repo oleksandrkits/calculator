@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-
-class Button extends React.Component {
-    render() {
-        return (
-            <button className={this.props.class} onClick={() => this.props.onClick()}>
-                {this.props.value}
-            </button>
-        );
-    }
-}
-
+import BMI from './js/BMI.js';
+import Button from "./js/Button";
 
 class Board extends React.Component {
     constructor(props){
@@ -128,7 +119,7 @@ class App extends React.Component {
         return (
             <div className="game">
                 <div className="game-board">
-                    <Board />
+                    <BMI />
                 </div>
                 <div className="game-info">
                 </div>
