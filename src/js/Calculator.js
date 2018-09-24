@@ -88,7 +88,7 @@ class Calculator extends React.Component {
         return <Button value={i} class={'square'} onClick={()=>this.handleClearClick()}/>;
     }
     renderScreen(digits) {
-        return <Screen digits={digits} />;
+        return <Screen value={digits} />;
     }
 
     render() {

@@ -5,7 +5,7 @@ function Screen(props) {
 
     return (
         <div className='screen'>
-            {props.digits}
+            {props.value}
         </div>
     );
 }
